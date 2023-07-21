@@ -66,6 +66,12 @@
     let mainContainer = document.getElementById("products");
     mainContainer.innerHTML = "";
 
+    if (data.length === 0) {
+      // Display a message if there are no products available
+      mainContainer.innerHTML = "No products available.";
+      return;
+    }
+
     for (let i = 0; i < data.length; i++) {
       let cardElem = document.createElement("div");
       cardElem.className = "card";
@@ -94,18 +100,21 @@
 
   //to search input
   function searchProducts() {
-    let searchedInput = document
-      .getElementById("search")
-      .value.trim()
-      .toLowerCase();
-    console.log("searchedInput", searchedInput);
+    //to delay the response
+    debounceTimer = setTimeout(() => {
+      let searchedInput = document
+        .getElementById("search")
+        .value.trim()
+        .toLowerCase();
+      console.log("searchedInput", searchedInput);
 
-    // Filter the products based on the search search results
-    const searchResults = receivedObj.filter((product) =>
-      product.title.toLowerCase().includes(searchedInput)
-    );
+      // Filter the products based on the search search results
+      const searchResults = receivedObj.filter((product) =>
+        product.title.toLowerCase().includes(searchedInput)
+      );
 
-    // Display the search results
-    renderUI(searchResults);
+      // Display the search results
+      renderUI(searchResults);
+    }, 600);
   }
 </script>
