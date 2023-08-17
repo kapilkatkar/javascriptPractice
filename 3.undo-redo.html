@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 400px;
+        height: 500px;
+      }
+      #form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .name,
+      .DOB,
+      .genders {
+        display: flex;
+        gap: 15px;
+      }
+
+      input {
+        height: 10px;
+        padding: 10px;
+      }
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+      .button button {
+        width: 70px;
+        height: 30px;
+        background-color: white;
+        border: 2px solid silver;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form">
+        <div class="name">
+          <input type="text" placeholder="First name" id="name" />
+          <input type="text" placeholder="Surname" id="Surname" />
+        </div>
+        <input
+          type="text"
+          placeholder="Mobile number or email address"
+          id="mobileNumber-emailId"
+        />
+        <input type="password" placeholder="new password" id="password" />
+        <div class="DOB">
+          <label for="DOB">date of Birth :</label>
+          <input type="date" id="date" />
+        </div>
+        <label for="genders" class="genders">
+          genders :
+          <label for="male">Male</label>
+          <input type="radio" name="gender" value="male" />
+          <label for="Female">Female</label>
+          <input type="radio" name="gender" value="Female" />
+          <label for="others">others</label>
+          <input type="radio" name="gender" value="others" />
+        </label>
+
+        <div class="button">
+          <button id="undo">Undo</button>
+          <button id="redo">Redo</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  //declaring functions
+  const onundoClick = () => {
+    let a = document.getElementById("name").value;
+    console.log(a);
+    alert("undo button clicked : " + a);
+  };
+
+  const onRedoClick = () => {
+    alert("redo button clicked");
+  };
+  //function call
+  document.getElementById("undo").addEventListener("click", onundoClick);
+  document.getElementById("redo").addEventListener("click", onRedoClick);
+</script>
